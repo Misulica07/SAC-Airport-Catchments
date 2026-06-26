@@ -1,0 +1,30 @@
+# --- Core --------------------------------------------------------------
+pyyaml>=6.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# --- Geospatial --------------------------------------------------------
+geopandas>=0.14.0
+shapely>=2.0.0
+pyproj>=3.6.0
+fiona>=1.9.0
+
+# --- Tabular -----------------------------------------------------------
+pandas>=2.1.0
+openpyxl>=3.1.0          # required to read .xlsx (e.g. GDHI tables)
+
+# --- Visualisation -----------------------------------------------------
+folium>=0.15.0
+matplotlib>=3.8.0
+mapclassify>=2.6.0
+
+# --- Phase 2 (Census + Transit) ---------------------------------------
+# Uncomment as each module comes online.
+# gtfs-kit>=10.0.0
+# partridge>=1.1.1
+# r5py>=0.1.0
+
+# --- Developer tooling -------------------------------------------------
+pytest>=7.4.0
+pytest-cov>=4.1.0
+ruff>=0.1.0

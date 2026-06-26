@@ -1,0 +1,72 @@
+# =========================================================================
+# Project Configuration — Airport Catchment Areas
+#
+# All static parameters live here so the code never holds magic numbers.
+# Add a new airport by appending an entry below; nothing else needs to change.
+# =========================================================================
+
+airports:
+  - code: "LTN"
+    name: "London Luton"
+    lon: -0.368333
+    lat: 51.874722
+    colour: "purple"
+
+  - code: "LHR"
+    name: "London Heathrow"
+    lon: -0.461389
+    lat: 51.477500
+    colour: "blue"
+
+  - code: "LGW"
+    name: "London Gatwick"
+    lon: -0.190278
+    lat: 51.148056
+    colour: "green"
+
+# -------------------------------------------------------------------------
+# Driving-isochrone parameters
+# -------------------------------------------------------------------------
+isochrones:
+  profile: "driving-car"               # ORS routing profile
+  thresholds_minutes: [30, 45, 60]     # max 60 on the ORS free tier
+  smoothing: 25                        # 0–100 — higher = smoother polygons
+  request_timeout_seconds: 30
+  retry_attempts: 3
+  retry_backoff_seconds: 5
+
+# -------------------------------------------------------------------------
+# Map rendering
+# -------------------------------------------------------------------------
+map:
+  centre: { lat: 51.5074, lon: -0.1278 }
+  zoom_start: 9
+  tiles: "CartoDB positron"
+  fill_opacity: 0.15
+  line_weight: 2
+
+# -------------------------------------------------------------------------
+# Coordinate reference systems
+# -------------------------------------------------------------------------
+crs:
+  geographic: "EPSG:4326"     # WGS-84 — for folium, ORS output
+  projected_uk: "EPSG:27700"  # British National Grid — for accurate UK distances/areas
+
+# -------------------------------------------------------------------------
+# UK Census (Phase 2)
+# -------------------------------------------------------------------------
+census:
+  geography_level: "LSOA"     # one of: LSOA, MSOA, ITL3
+  tables:
+    population:  "TS001"      # residents total
+    age:         "TS007A"     # age by single year
+    deprivation: "IMD2019"    # Index of Multiple Deprivation
+  boundaries_url: "https://geoportal.statistics.gov.uk/"
+
+# -------------------------------------------------------------------------
+# Public-transport accessibility (Phase 2)
+# -------------------------------------------------------------------------
+transit:
+  tfl_api_root: "https://api.tfl.gov.uk"
+  traveline_gtfs_url: "https://www.travelinedata.org.uk/"
+  modes: ["tube", "rail", "bus", "coach"]
